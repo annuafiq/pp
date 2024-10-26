@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kang kepising</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Gaya umum kanggo badan kaca */
+        body {
+            font-family: 'Arial', sans-serif; /* Jenis font */
+            margin: 0; /* Ngilangke margin */
+            padding: 0; /* Ngilangke padding */
+            background-color: #180000; /* Warna latar belakang */
+            color: #fff; /* Warna teks */
+            display: flex; /* Nggunakake flexbox */
+            flex-direction: column; /* Susunan vertikal */
+            align-items: center; /* Nganggo rata tengah */
+        }
+        /* Gaya kanggo header */
+        header {
+            background: rgba(153, 0, 0, 0.85); /* Latar belakang semi-transparan */
+            color: white; /* Warna teks putih */
+            padding: 10px; /* Padding header */
+            text-align: center; /* Teks rata tengah */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7); /* Bayangan */
+            width: 100%; /* Lebar 100% */
+            height: 50px; /* Dhuwur header */
+            position: fixed; /* Posisi tetep */
+            top: 0; /* Ditempatake ing sisih ndhuwur */
+            z-index: 1000; /* Supaya tetep ing ndhuwur */
+            overflow: hidden; /* Ngilangke bagian sing melampaui */
+        }
+        /* Gaya kanggo teks mlaku ing header */
+        .marquee {
+            white-space: nowrap; /* Teks ing siji baris */
+            animation: scroll 15s linear infinite; /* Animasi mlaku */
+        }
+        /* Animasi mlaku */
+        @keyframes scroll {
+            0% { transform: translateX(100%); } /* Awal saka kanan */
+            100% { transform: translateX(-100%); } /* Pungkasan ing kiwa */
+        }
+        /* Gaya kanggo kontainer utama */
+        .container {
+            display: flex; /* Nggunakake flexbox */
+            flex-direction: column; /* Susunan vertikal */
+            align-items: center; /* Nganggo rata tengah */
+            padding: 80px 20px 80px; /* Padding kontainer */
+            width: 100%; /* Lebar 100% */
+            max-width: 1200px; /* Lebar maksimum */
+        }
+        /* Gaya kanggo kartu profil */
+        .card {
+            background-color: #444; /* Warna latar belakang kartu */
+            width: 100%; /* Lebar 100% */
+            max-width: 600px; /* Lebar maksimum */
+            border-radius: 15px; /* Sudut membulat */
+            border: 2px solid #e63946; /* Garis tepi */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Bayangan */
+            margin: 15px 0; /* Margin antar kartu */
+            display: flex; /* Nggunakake flexbox */
+            padding: 20px; /* Padding kartu */
+            position: relative; /* Posisi relatif */
+            overflow: hidden; /* Ngilangke bagian sing melampaui */
+            opacity: 0; /* Awal kartu ora katon */
+            animation: fadeIn 0.5s forwards; /* Animasi muncul */
+        }
+        /* Animasi muncul */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); } /* Awal transparan */
+            to { opacity: 1; transform: translateY(0); } /* Pungkasan tampak */
+        }
+        /* Gaya kanggo gambar latar kartu */
+        .card::before {
+            content: ''; /* Konten kosong */
+            position: absolute; /* Posisi absolut */
+            top: 0; left: 0; right: 0; bottom: 0; /* Mengatur posisi */
+            background: url("bbgg.jpg") no-repeat center; /* Gambar latar belakang */
+            opacity: 0.5; /* Transparansi gambar */
+            pointer-events: none; /* Supaya ora ngalangi interaksi */
+            z-index: 1; /* Di belakang konten */
+        }
+        /* Gaya kanggo gambar ing kartu */
+        .card img {
+            width: 150px; /* Lebar gambar */
+            height: 150px; /* Dhuwur gambar */
+            object-fit: cover; /* Nyetel gambar supaya cocog */
+            border-radius: 75px; /* Sudut membulat gambar */
+            margin-right: 20px; /* Margin kanan */
+            z-index: 2; /* Di depan efek latar */
+        }
+        /* Gaya kanggo informasi ing kartu */
+        .card-info {
+            display: flex; /* Nggunakake flexbox */
+            flex-direction: column; /* Susunan vertikal */
+            justify-content: center; /* Nganggo rata tengah */
+            z-index: 2; /* Di depan efek latar */
+        }
+        /* Gaya kanggo judhul ing kartu */
+        .card h2 {
+            color: #ff0015; /* Warna judhul */
+            margin: 0; /* Ngilangke margin */
+            font-size: 24px; /* Ukuran font judhul */
+        }
+        /* Gaya kanggo paragraf ing kartu */
+        .card p {
+            line-height: 1.6; /* Jarak antar baris */
+            margin: 5px 0; /* Margin paragraf */
+            font-size: 16px; /* Ukuran font paragraf */
+        }
+        /* Gaya kanggo ikon sosial */
+        .social-icons {
+            margin-top: 10px; /* Margin ndhuwur */
+            display: flex; /* Nggunakake flexbox */
+            justify-content: center; /* Nganggo rata tengah */
+        }
+        /* Gaya kanggo link ikon sosial */
+        .social-icons a {
+            margin: 0 10px; /* Margin antar ikon */
+            color: #e63946; /* Warna ikon */
+            text-decoration: none; /* Ngilangke garis bawah */
+            font-size: 28px; /* Ukuran ikon */
+            transition: color 0.3s, transform 0.3s; /* Transisi efek */
+        }
+        /* Gaya efek hover kanggo ikon sosial */
+        .social-icons a:hover {
+            color: #f1faee; /* Warna nalika hover */
+            transform: scale(1.2); /* Nambah ukuran nalika hover */
+        }
+        /* Gaya kanggo footer */
+        footer {
+            text-align: center; /* Teks rata tengah */
+            padding: 10px; /* Padding footer */
+            background-color: rgba(153, 0, 0, 0.85); /* Latar belakang footer */
+            color: white; /* Warna teks footer */
+            width: 100%; /* Lebar 100% */
+            height: 1px; /* Dhuwur footer */
+            position: relative; /* Posisi relatif */
+            bottom: 0; /* Ditempatake ing ngisor */
+            margin-top: auto; /* Supaya footer tetep ing ngisor */
+        }
+        /* Gaya kanggo teks hak cipta */
+        .copyright {
+            position: absolute; /* Posisi absolut */
+            width: 100%; /* Lebar 100% */
+            bottom: -30px; /* Ditempatake ing ngisor footer */
+            left: 0; /* Mbenake ing kiwa */
+            animation: scroll 15s linear infinite; /* Animasi mlaku */
+        }
+        /* Gaya responsif */
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column; /* Nyusun gambar lan informasi vertikal */
+                align-items: center; /* Nganggo rata tengah */
+            }
+            .card img {
+                margin-right: 0; /* Mbusak margin kanan */
+                margin-bottom: 10px; /* Nambah margin ngisor */
+            }
+            .card h2 {
+                font-size: 20px; /* Nyetel ukuran font judhul */
+            }
+            .card p {
+                font-size: 14px; /* Nyetel ukuran font paragraf */
+            }
+            .social-icons a {
+                font-size: 24px; /* Nyetel ukuran ikon sosial */
+            }
+        }
+        /* Gaya responsif kanggo layar cilik */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 16px; /* Nyetel ukuran font header */
+            }
+            .marquee {
+                font-size: 14px; /* Nyetel ukuran font marquee */
+            }
+            footer {
+                padding: 5px; /* Nyetel padding footer */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="marquee">
+            <h1>Developer Web</h1> <!-- Teks mlaku ing header -->
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <img src="pp1.jpeg" alt="Jasa Pembuatan Web"> <!-- Gambar profil -->
+            <div class="card-info">
+                <h2>MUHAMMAD AFIQ ARDIANTA</h2> <!-- Nama -->
+                <p><strong>TTL:</strong> Demak, 2 Mei</p> <!-- Tanggal lahir -->
+                <p><strong>Pekerjaan:</strong> Pengembang Web</p> <!-- Pekerjaan -->
+                <p><strong>Hobi:</strong>-</p> <!-- Hobi -->
+                <p><strong>Email:</strong> nggopublik@gmail.com</p> <!-- Email -->
+                <p><strong>No HP:</strong> 0882-0054-21918</p> <!-- Nomor HP -->
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a> <!-- Ikon Facebook -->
+                    <a href="#"><i class="fab fa-twitter"></i></a> <!-- Ikon Twitter -->
+                    <a href="#"><i class="fab fa-instagram"></i></a> <!-- Ikon Instagram -->
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/150" alt="Jasa web murah"> <!-- Gambar profil -->
+            <div class="card-info">
+                <h2>MUHAMMAD ULIL SULTAN</h2> <!-- Nama -->
+                <p><strong>TTL:</strong>-</p> <!-- Tanggal lahir -->
+                <p><strong>Pekerjaan:</strong> Partner</p> <!-- Pekerjaan -->
+                <p><strong>Hobi:</strong>-</p> <!-- Hobi -->
+                <p><strong>Email:</strong>-</p> <!-- Email -->
+                <p><strong>No HP:</strong> 0838-2475-1770</p> <!-- Nomor HP -->
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a> <!-- Ikon Facebook -->
+                    <a href="#"><i class="fab fa-twitter"></i></a> <!-- Ikon Twitter -->
+                    <a href="#"><i class="fab fa-instagram"></i></a> <!-- Ikon Instagram -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2024 Semua Hak Saya Wowokslide</p> <!-- Teks hak cipta -->
+        </div>
+    </footer>
+
+</body>
+</html>
