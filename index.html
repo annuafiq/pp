@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Developer Web - Hacker Theme</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Gaya umum kanggo badan kaca */
+        body {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000;
+            color: #00ff00;
+        }
+
+        /* Gaya latar belakang kode berjatuhan */
+        #matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .char {
+            position: absolute;
+            top: -20px;
+            font-family: 'Courier New', monospace;
+            font-size: 20px;
+            color: #00ff00;
+            opacity: 0;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        header {
+            background: rgba(0, 153, 0, 0.85);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+            width: 100%;
+            height: 50px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: #444;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 15px;
+            border: 2px solid #00ff00;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            margin: 15px 0;
+            display: flex;
+            padding: 20px;
+            position: relative;
+            flex-wrap: wrap;
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 75px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card h2 {
+            color: #00ff00;
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            margin: 5px 0;
+            font-size: 16px;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 28px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #fff;
+            transform: scale(1.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 153, 0, 0.85);
+            color: white;
+            width: 100%;
+            height: 50px;
+            position: relative;
+            bottom: 0;
+            margin-top: auto;
+        }
+
+        /* Tombol Hubungi Kami */
+        .contact-button {
+            background-color: #00ff00;
+            color: #000;
+            font-size: 18px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #00cc00;
+        }
+
+        /* Media Query untuk perangkat kecil */
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column;
+                align-items: center;
+                padding: 15px;
+            }
+
+            .card img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .social-icons a {
+                font-size: 24px;
+            }
+
+            .contact-button {
+                width: 100%;
+                font-size: 16px;
+                padding: 12px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card h2 {
+                font-size: 20px;
+            }
+
+            .card p {
+                font-size: 14px;
+            }
+
+            .social-icons a {
+                font-size: 20px;
+            }
+
+            .contact-button {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Latar belakang kode berjatuhan -->
+    <div id="matrix"></div>
+
+    <header>
+        <div class="marquee">
+            <h1>Developer Web</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <img src="Profil jasa pembuatan website.jpeg" alt="Jasa Pembuatan Web">
+            <div class="card-info">
+                <h2>MUHAMMAD AFIQ ARDIANTA</h2>
+                <p><strong>TTL:</strong> Demak, 2 Mei</p>
+                <p><strong>Pekerjaan:</strong> Pengembang Web</p>
+                <p><strong>Hobi:</strong> Coding, Game, Musik</p>
+                <p><strong>Email:</strong> nggopublik@gmail.com</p>
+                <p><strong>No HP:</strong> 0882-0054-21918</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/wowokslide/?__pwa=1#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Hubungi Kami -->
+        <a href="https://wa.me/62882005421918" target="_blank">
+            <button class="contact-button">Hubungi Kami di WhatsApp</button>
+        </a>
+
+    </div>
+
+    <footer>
+        <div class="copyright">
+            <p>&copy; 2024 Semua Hak Saya Wowokslide</p>
+        </div>
+    </footer>
+
+    <script>
+        function createMatrixEffect() {
+            const matrixContainer = document.getElementById('matrix');
+            const chars = 'arina'.split('');
+            const numColumns = window.innerWidth / 20;
+            const drops = [];
+
+            for (let i = 0; i < numColumns; i++) {
+                drops.push({ x: i * 20, y: Math.random() * window.innerHeight });
+            }
+
+            function animateMatrix() {
+                matrixContainer.innerHTML = '';
+                for (let i = 0; i < drops.length; i++) {
+                    let drop = drops[i];
+                    let char = document.createElement('div');
+                    char.classList.add('char');
+                    char.style.left = `${drop.x}px`;
+                    char.style.top = `${drop.y}px`;
+                    char.textContent = chars[Math.floor(Math.random() * chars.length)];
+
+                    matrixContainer.appendChild(char);
+
+                    drop.y += 10;
+                    if (drop.y > window.innerHeight) {
+                        drop.y = -20;
+                    }
+                }
+                requestAnimationFrame(animateMatrix);
+            }
+
+            animateMatrix();
+        }
+
+        window.onload = createMatrixEffect;
+    </script>
+
+</body>
+</html>
